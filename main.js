@@ -23,11 +23,28 @@ var ball = {
 
 function setup(){
   var canvas =  createCanvas(700,600);
+
+  canvas = createCanvas(700,300)
+  canvas.parent("canvas");
+
+  video = createCpature(VIDEO);
+   video.size(600,300);
+   video.parent("game_console.png");
+   video.hide();
+
+   posenet = ml5.poseNet(video , modelLoaded);
+   posenet.on('pose' , gotResults);
 }
+
+ function modelLoaded()
+ {
+   console.log("modelLoaded!");
+ }
 
 
 function draw(){
 
+  image(video , 0 , 0 , 600 , 300);
  background(0); 
 
  fill("black");
