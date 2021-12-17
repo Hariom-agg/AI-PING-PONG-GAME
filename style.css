@@ -35,3 +35,9 @@ position: fixed;
 
 }
 
+canvas
+{
+    border:  7px solid black;
+    box-shadow: 5px 5px 3px 3px grey;
+}
+
