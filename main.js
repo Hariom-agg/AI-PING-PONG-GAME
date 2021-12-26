@@ -2,6 +2,10 @@
 /*created by prashant shukla */
 
 video = "";
+right_wrist_x = "";
+right_wrist_y = "";
+right_wrist_score = "";
+
 
 var paddle2 =10,paddle1=10;
 
@@ -24,16 +28,28 @@ var ball = {
 }
 
 function setup(){
-  var canvas =  createCanvas(700,600);
+  canvas =  createCanvas(700,600);
   canvas.parent("canvas");
 
-  video = createCpature(VIDEO);
+  video = createCapture(VIDEO);
    video.size(600,300);
-   video.parent("game_console.png");
-   video.hide();
+   video.parent('game_console');
+   
 
-   posenet = ml5.poseNet(video , modelLoaded);
-   posenet.on('pose' , gotResults);
+   poseNet = ml5.poseNet(video , modelLoaded);
+   poseNet.on('pose', getResult);
+}
+
+function getResult(results)
+{
+  if(results.length > 0)
+  {
+   console.log(results);
+  right_wrist_x = results[0].pose.rightWrist.x;
+  right_wrist_y = results[0].pose.rightWrist.y;
+  console.log("right_wrist_x" + right_wrist_x + "right_wrist_y" + right_wrist_y )''
+  }
+  
 }
 
  function modelLoaded()

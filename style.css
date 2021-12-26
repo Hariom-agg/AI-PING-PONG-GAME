@@ -41,3 +41,10 @@ canvas
     box-shadow: 5px 5px 3px 3px grey;
 }
 
+video{
+    background-image: url('game_console_edited.png');
+    background-size: cover;
+    background-position: center;
+    padding: 17px;
+}
+
