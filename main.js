@@ -45,9 +45,12 @@ function getResult(results)
   if(results.length > 0)
   {
    console.log(results);
+  right_wrist_score = results[0].pose.keypoints[10].score;
+  console.log(right_wrist_score);
   right_wrist_x = results[0].pose.rightWrist.x;
   right_wrist_y = results[0].pose.rightWrist.y;
-  console.log("right_wrist_x" + right_wrist_x + "right_wrist_y" + right_wrist_y )''
+  console.log("right_wrist_x" + right_wrist_x + "right_wrist_y" + right_wrist_y );
+  
   }
   
 }
@@ -61,6 +64,16 @@ function getResult(results)
 function draw(){
 
   image(video , 0 , 0 , 600 , 300);
+
+if(right_wrist_score > 0.2)
+{
+   fill("red");
+   stroke("red");
+   circle(right_wrist_x,right_wrist_y,25);
+}
+
+
+
  background(0); 
 
  fill("black");
